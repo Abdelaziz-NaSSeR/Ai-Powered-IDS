@@ -1,0 +1,24 @@
+data:
+  raw_path: data/raw/
+  processed_path: data/processed/
+  splits_path: data/splits/
+
+model:
+  ae_latent_dim: 64
+  ae_epochs: 50
+  ae_batch_size: 128
+  lgbm_params:
+    n_estimators: 300
+    num_leaves: 64
+    random_state: 42
+
+fusion:
+  weights: [0.4, 0.4, 0.2]
+  target_tpr: 0.9
+
+paths:
+  scaler: models/scalers/scaler.joblib
+  label_encoder: models/scalers/label_encoder.joblib
+  threshold: models/thresholds/fused_threshold.pkl
+  ae_model: models/checkpoints/autoencoder.pt
+  lgbm_model: models/checkpoints/lgbm_seen.pkl

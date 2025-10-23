@@ -1,0 +1,16 @@
+numpy
+pandas
+scikit-learn
+xgboost
+matplotlib
+seaborn
+fastapi
+uvicorn
+pyyaml
+joblib
+pytest
+tqdm
+requests
+mlflow
+scapy
+pyshark
