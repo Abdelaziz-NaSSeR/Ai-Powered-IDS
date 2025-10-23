@@ -1,24 +1,35 @@
-<<<<<<< HEAD
-# Ai-Powered-IDS
-The IDS integrated with AI model (Semi-IPS) is an advanced network security system that combines artificial intelligence with intrusion detection capabilities to provide real-time network threat monitoring and response.
-=======
-# AI_IDS_PROJECT
+# 🚀 AI-Powered Intrusion Detection System (IDS)
 
-Professional project layout for semi-supervised intrusion detection (CICFlowMeter → preprocessing → semi-supervised detection → API).
+A real-time, intelligent Intrusion Detection System (IDS) that leverages **Machine Learning** and **AI-based traffic analysis** to detect and classify cyber threats from live network flows.  
+This project is part of the **Graduation Project** focused on integrating **network security, AI, and system automation** for next-generation intrusion prevention.
 
-## Quick start
+---
 
-1. Install dependencies:
-   pip install -r requirements.txt
+## 🧠 Overview
 
-2. Prepare data and run preprocessing (notebooks or scripts).
+The **AI-Powered IDS** analyzes network traffic using flow-based features extracted via **CICFlowMeter** and classifies packets into **benign or malicious categories** using trained machine learning models.  
+It supports both **offline dataset training** (CICIDS 2018) and **real-time inference** on live traffic captures.
 
-3. Train model:
-   python scripts/train_save.py <preprocessed_csv> <label_col>
+---
 
-4. Start API:
-   uvicorn api.main:app --reload
+## ⚙️ Key Features
 
-5. Test endpoints:
-   GET /, GET /health, POST /api/v1/predict
->>>>>>> dbcf700 (Initial commit: Add AI-Powered IDS project files)
+- 🌐 **Real-Time Traffic Monitoring** – captures and analyzes live network packets  
+- 🤖 **Machine Learning–Driven Detection** – detects DDoS, PortScan, Brute Force, Botnet, and more  
+- 📊 **Automated Data Pipeline** – preprocesses and extracts network flow features using CICFlowMeter  
+- ⚡ **FastAPI Backend** – deploys the trained model for real-time classification  
+- 🧩 **Modular Project Structure** – clean separation of data, models, and services  
+- 🧠 **Support for Multiple Algorithms** – Random Forest, XGBoost, and Deep Neural Networks  
+
+---
+
+## 🧰 Tech Stack
+
+| Component | Technology |
+|------------|-------------|
+| Programming Language | Python 3.10+ |
+| Framework | FastAPI |
+| ML Libraries | Scikit-learn, XGBoost, TensorFlow |
+| Data Processing | Pandas, NumPy |
+| Network Flow Extraction | CICFlowMeter 4.0 |
+| Deployment | Uvicorn, Docker (optional) |
