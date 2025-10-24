@@ -1,6 +1,6 @@
 import numpy as np
-from pipeline.config import FUSION_WEIGHTS, DEVICE
-from pipeline.scoring_utils import build_fused_score, get_recon_errors, mahalanobis_to_closest
+from src.pipeline.config import FUSION_WEIGHTS, DEVICE
+from src.pipeline.scoring_utils import build_fused_score, get_recon_errors, mahalanobis_to_closest
 
 def infer_one(x_raw, scaler, clf, ae, class_means, cov_inv, pool_stats, weights=FUSION_WEIGHTS, thr=0.5, device=DEVICE):
     """
