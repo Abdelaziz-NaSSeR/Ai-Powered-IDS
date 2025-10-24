@@ -8,12 +8,12 @@ import os
 # General settings
 # ------------------------
 SEED = 42
-OUTPUT_DIR = "D:\AI_IDS_GRADUATION_PROJECT\models_artifacts"
+OUTPUT_DIR = "/kaggle/working/models_artifacts"
 
 # ------------------------
 # Data settings
 # ------------------------
-DATA_PATH = "../../data/cicids2018_merged.csv"
+DATA_PATH = "/kaggle/working/All-Processed-Reduced-Cleaned.csv"
 LABEL_COL = "Label"
 SURROGATE_UNSEEN = ["Infiltration"]
 SAMPLE_FRAC = 1.0  # For prototyping / downsampling
@@ -40,4 +40,6 @@ TARGET_TPR = 0.90
 # ------------------------
 # Torch device
 # ------------------------
-DEVICE = "cuda" if os.environ.get("USE_CUDA", "1") == "1" else "cpu"
+# DEVICE = "cuda" if os.environ.get("USE_CUDA", "1") == "1" else "cpu"
+
+DEVICE = "cpu"

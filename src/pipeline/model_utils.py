@@ -34,8 +34,28 @@ def train_lightgbm(X_train, y_train, X_val, y_val):
         random_state=SEED,
         n_jobs=-1
     )
-    clf.fit(X_train, y_train, eval_set=[(X_val, y_val)], early_stopping_rounds=50, verbose=False)
+
+    try:
+        # ✅ For LightGBM < 4.0 (older API)
+        clf.fit(
+            X_train, y_train,
+            eval_set=[(X_val, y_val)],
+            early_stopping_rounds=50,
+            verbose=False
+        )
+    except TypeError:
+        # ✅ For LightGBM >= 4.0 (new API)
+        clf.fit(
+            X_train, y_train,
+            eval_set=[(X_val, y_val)],
+            callbacks=[
+                lgb.early_stopping(stopping_rounds=50),
+                lgb.log_evaluation(period=0)
+            ]
+        )
+
     return clf
+
 
 # ------------------------
 # Train AE
