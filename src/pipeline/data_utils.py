@@ -5,7 +5,7 @@ Data preprocessing utilities for CICIDS2018 dataset
 import pandas as pd
 import numpy as np
 
-from src.pipeline.config import SEED, DATA_PATH, LABEL_COL
+from src.pipeline.config import SEED, DATA_PATH, SAMPLE_FRAC
 
 # Column renaming map for CICIDS-2018
 rename_map = {
@@ -81,7 +81,7 @@ rename_map = {
     "Idle Min": "idle_min",
 }
 
-def load_csv(path=DATA_PATH, sample_frac=1.0):
+def load_csv(path=DATA_PATH, sample_frac=SAMPLE_FRAC):
     df = pd.read_csv(path)
     if sample_frac < 1.0:
         df = df.sample(frac=sample_frac, random_state=SEED)
@@ -115,8 +115,11 @@ def preprocess_flow(df: pd.DataFrame) -> pd.DataFrame:
                  or "active" in c.lower() or "idle" in c.lower()]
     for col in time_cols:
         try:
+            # ensure numeric
             df[col] = pd.to_numeric(df[col], errors='coerce')
+            # Replace negative durations with NaN (invalid)
             df.loc[df[col] < 0, col] = np.nan
+            # Clip extreme positive outliers
             df[col] = df[col].clip(lower=0, upper=1e8)
         except Exception:
             continue
