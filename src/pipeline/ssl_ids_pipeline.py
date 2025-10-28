@@ -17,7 +17,7 @@ def run_pipeline():
     df = load_csv(sample_frac=SAMPLE_FRAC)
     df = preprocess_flow(df)
     X = df.drop(columns=[LABEL_COL]).values
-    y = df[LABEL_COL].apply(lambda x: 0 if x=="BENIGN" else 1).values
+    y = df[LABEL_COL].apply(lambda x: 0 if x=="Benign" else 1).values
 
     # ------------------------
     # Train/Test split
